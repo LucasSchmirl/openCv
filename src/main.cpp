@@ -24,7 +24,7 @@ int main(int argc, char* argv[])
     }
 
     std::cout << "Loading image from: \"" << fname << "\""<< std::endl;
-    // create Window with cv::namedWindow("name", flag) using flag: 1 to make window resizable
+    // create Window with cv::namedWindow("name", flag) using flag: 0 to make window resizable
     cv::namedWindow("Image: Schaukelbub", 0);
     // insert Image into Window by giving same name
     cv::imshow("Image: Schaukelbub", img);

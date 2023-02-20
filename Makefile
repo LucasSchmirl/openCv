@@ -11,24 +11,20 @@ LIBRARIES = $(OPENCVFLAGS)
 # find sources
 SOURCE := $(shell find . -name 'main.cpp')
 
-
-# find headers
-HEADERS := $(shell find . -name '*.hpp')
-
-# name program
-PROGRAM := helloWorld
+# # find headers
+# HEADERS := $(shell find . -name '*.hpp')
 
 # name executables
 EXE := helloWorld
 
 
 all: $(EXE)
-	@echo "\nAll object files created and linked.\nAll executables created: (helloWorld)"
+	@echo "\nAll object files created and linked.\nAll executables created (helloWorld).\nUse with: ./helloWorld <path_to_file>\n"
 
 
 # build executable programs
-$(PROGRAM): $(SOURCE)
-	$(CC) $(CPPFLAGS) -o $(PROGRAM) $< $(LIBRARIES)
+$(EXE): $(SOURCE)
+	$(CC) $(CPPFLAGS) -o $(EXE) $< $(LIBRARIES)
 
 
 

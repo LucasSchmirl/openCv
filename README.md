@@ -66,7 +66,7 @@ python3 scripts/take_pic.py
 <br>
 <br>
 
-# CPP:
+# C++:
 ### Content: 
 `Makefile` (to build the project, compiling and linking)
 

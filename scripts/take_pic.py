@@ -1,3 +1,5 @@
+#	made by Lucas Schmirl 20.02.2022,	last edit: 20.02.2022
+
 import cv2
 import time
 

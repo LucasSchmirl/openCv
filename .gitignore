@@ -15,4 +15,5 @@
 *.o
 *.out
 .pdf:Zone.Identifier
+.pdf
 .json

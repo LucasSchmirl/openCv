@@ -1,8 +1,9 @@
+#	made by Lucas Schmirl 20.02.2022,	last edit: 20.02.2022
 import cv2
 import numpy as np
 
 
-## Look into "take_pic.py" why this is not working!
+## Look into "README.md" why this is not working!
 
 all_camera_idx_available = []
 

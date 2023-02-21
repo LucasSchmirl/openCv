@@ -3,7 +3,10 @@
 import cv2
 import time
 
-# need to add/export cam to WSL to make it accessible
+
+## LOOK INTO README!!
+# 
+# # need to add/export cam to WSL to make it accessible
 # from powershell with admin rights do
 # usbipd wsl list # and get BUSID from Camera
 # usbipd wsl attach --busid x-y # attaching camera to ubuntu
@@ -12,17 +15,6 @@ import time
 # currently not working
 
 
-
-
-## ACESSING USB-DEVICES IS NOT POSSIBLE USING WSL2 WITHOUT BUILDING YOUR OWN KERNEL
-
-# (Advice on cam&mic in WSL2) ## https://version-2.com/zh/2022/02/advice-on-camera-and-microphone-in-wsl2-ubuntu/
-
-# Video for kernel rebuild    ## https://www.youtube.com/watch?v=t_YnACEPmrM
-# commands                    ## https://agiledevart.github.io/wsl2_usb_camera.txt
-# Kernel                      ## https://github.com/microsoft/WSL2-Linux-Kernel/releases/tag/linux-msft-wsl-5.15.79.1
-
-## THIS IS TO SPICY FOR ME!!
 
 ## Camera Data
 videoDevice = 0  #webcam

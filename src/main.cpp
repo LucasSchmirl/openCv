@@ -1,6 +1,6 @@
 //  made by Lucas Schmirl 20.02.2022,	last edit: 20.02.2022
 #include <iostream>
-#include <opencv2/opencv.hpp>
+#include <opencv2/opencv.hpp> // this header conains all others (openCv)
 
 
 
@@ -37,7 +37,10 @@ int main(int argc, char* argv[])
     std::cout << "Press any key to close current window." << std::endl;
     // resize window to image size
     cv::resizeWindow("Image: Schaukelbub", img.size());
-    
+    // on some machines 2nd Argument cant be the img.size array. 
+    // It has to be ("name", int width, int height)
+    // This can be done with: //cv::resizeWindow("name", img.cols, img.rows)
+
     // wait for user input (keyboard)
     while(cv::waitKey(0) == 0);
     

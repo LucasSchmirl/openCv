@@ -1,5 +1,5 @@
-#   This README shows how to run the openCv programs 
-made by Lucas Schmirl 20.02.2022,	last edit: 20.02.2022
+#   OpenCv: Hello World programs in python and C++
+made by Lucas Schmirl 20.02.2022, info.hellgineer@gmail.com, last edit: 21.02.2022
 
 <br>
 
@@ -33,10 +33,20 @@ To deactivate the environment:
 deactivate
 ```
 
-Inside this `venv` install the openCv pip pkg:
+Inside this `venv`, packages can be installed (f.e. `pip`) which are only accessible inside this `venv` (not system wide). If you delete the `venv`, all containing packages are deleted. 
+
+Continue by installing the openCv pip pkg:
 ```bash
 pip install opencv-contrib-python
 ```
+
+If this install fails, check out your versions with:
+```bash
+pip --version
+python --version
+```
+and find out (by using the internet) which versions are the minimal requirement. Maybe you need to upgrade your stuff.
+
 
 <br>
 <br>
@@ -102,7 +112,7 @@ make
 
 <br>
 
-### Weird bugs
+### Weird WSL bugs
 
 When using older version of WSL2 pics close immideately or dont close at all after using the keyboard to interact with `waitkey(0)` the key chache can get stuck. 
 

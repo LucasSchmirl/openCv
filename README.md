@@ -36,7 +36,7 @@ deactivate
 
 Inside this `venv`, packages can be installed (f.e. `pip`) which are only accessible inside this `venv` (not system wide). If you delete the `venv`, all containing packages are deleted. 
 
-Continue by installing the openCv pip pkg:
+Continue by **installing the openCv pip pkg:**
 ```bash
 pip install opencv-contrib-python
 ```

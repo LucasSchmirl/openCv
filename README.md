@@ -13,6 +13,7 @@ mkdir openCv
 ```
 
 For using openCv inside a virtual environment install `venv`:
+(if not needed skip to 'installing the openCv pip pkg')
 
 ```bash
 sudo apt install -y python3-venv

@@ -56,6 +56,12 @@ Continue by installing the openCv pip package:
 pip install opencv-contrib-python
 ```
 
+or install specific version, usage: `pip install opencv-contrib-python==<version>`
+
+```bash
+pip install opencv-contrib-python==3.4.0
+```
+
 If this install fails, check out your versions with:
 ```bash
 pip --version

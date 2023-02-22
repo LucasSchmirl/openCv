@@ -62,6 +62,8 @@ or install specific version, usage: `pip install opencv-contrib-python==<version
 pip install opencv-contrib-python==3.4.0
 ```
 
+If error: repeat the command with available version shown in terminal
+
 If this install fails, check out your versions with:
 ```bash
 pip --version

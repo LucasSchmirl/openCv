@@ -1,15 +1,13 @@
 #   OpenCv Setup and Hello World programs in python and C++
-made by Lucas Schmirl 20.02.2022, info.hellgineer@gmail.com, last edit: 21.02.2022
+made by Lucas Schmirl 20.02.2022, info.hellgineer@gmail.com, last edit: 23.02.2022
 
 <br>
 
-# General:
+# Virtual environment installation (optional)
 
-## Virtual environment installation
+For using openCv inside a virtual environment install a `venv`:
 
-For using openCv inside a virtual environment install a `venv` (virtual environment):
-
-Inside this `venv`, packages can be installed (f.e. `pip`) which are only accessible inside this `venv` (not system wide). If you delete the `venv`, all containing packages are deleted.
+Inside this `venv`, packages can be installed (e.g. `pip`) which are only accessible inside this `venv` (not system wide). If you delete the `venv`, all containing packages are deleted.
 
 if not needed, skip to [OpenCv installation](#opencv-installation)
 
@@ -44,14 +42,25 @@ deactivate
 
 <br>
 
-## OpenCv installation
 
-If not already done create a folder for the project:
+# If you want to use PYTHON:
+
+(if not interested in python, skip to [the REAL language](#if-you-want-to-use-c) lol)
+
+## OpenCv installation for use with Python
+
+If not already done, create a folder for the project:
 ```bash
 mkdir openCv
 ```
 
-Continue by installing the openCv pip package:
+For use with Python continue by installing the openCv pip package.
+
+If you want to install only inside `venv`, first enter it using: 
+```bash
+source <name-of-your-venv>/bin/activate
+```
+and then do:
 ```bash
 pip install opencv-contrib-python
 ```
@@ -62,31 +71,19 @@ or install specific version, usage: `pip install opencv-contrib-python==<version
 pip install opencv-contrib-python==3.4.0
 ```
 
-If this install fails, check out your versions with:
-```bash
-pip --version
-python --version
-```
-and check the internet to find out which versions are the minimal requirement. 
+This will fail becaus there is no `3.4.0`. 
 
-Maybe you just need to upgrade your stuff using.
+From the error message you can now choose your beloved version and re-run the last command with chosen version.
 
-```bash
-sudo apt-get update && sudo apt-get upgrade -y
-sudo apt update && sudo apt upgrade -y
-```
-
-And/Or [restart your WSL](#weird-wsl-bugs)
-
+Now your openCv installation for python is complete.
 <br>
 <br>
 
-# If you want to use PYTHON:
-
-if not interested in python, skip to [the REAL language](#if-you-want-to-use-c)
 
 ### Content: 
 `requirements.txt` (lists all needed pkg's)
+
+`scripts/openCv_version.py` (displays currently used openCv version)
 
 `scripts/helloworld.py` (python script to load and display image)
 
@@ -100,6 +97,7 @@ if not interested in python, skip to [the REAL language](#if-you-want-to-use-c)
 
 ### USAGE: 
 ```bash
+python3 scripts/openCv_version.py
 python3 scripts/hello_world.py
 python3 scripts/take_pic.py
 python3 scripts/getcam.py
@@ -112,27 +110,91 @@ pip install -r requirements.txt
 <br>
 <br>
 
+
 # If you want to use C++:
+
+## OpenCv installation for use with C++
+
+For use with C++ continue by installing openCv system-wide.
+
+To get root rights (because you are going to mess around in `/opt`):
+```bash
+sudo -s
+```
+
+Change dir to `/opt`:
+```bash
+cd /opt
+```
+
+Get `opencv` and `opencv_contrib`:
+```bash
+wget -O opencv.zip https://github.com/opencv/opencv/archive/3.4.zip
+wget -O opencv_contrib.zip https://github.com/opencv/opencv_contrib/archive/3.4.zip
+```
+
+Unzip both:
+```bash
+unzip opencv.zip
+unzip opencv_contrib.zip
+```
+
+Change the name of these two folders:
+```bash
+mv opencv-3.4 opencv
+mv opencv_contrib-3.4 opencv_contrib
+```
+
+To build, run the following commands line by line (thaks to [Fynn](https://github.com/fynnbehnke) its that easy): 
+```bash
+cd opencv
+mkdir release
+cd release
+
+cmake -D BUILD_TIFF=ON -D WITH_CUDA=OFF -D ENABLE_AVX=OFF -D WITH_OPENGL=OFF -D WITH_OPENCL=OFF -D WITH_IPP=OFF -D WITH_TBB=ON -D BUILD_TBB=ON -D WITH_EIGEN=OFF -D WITH_V4L=OFF -D WITH_VTK=OFF -D BUILD_TESTS=OFF -D BUILD_PERF_TESTS=OFF -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D OPENCV_EXTRA_MODULES_PATH=/opt/opencv_contrib/modules /opt/opencv/
+
+make -j4
+make install
+ldconfig
+
+exit
+cd
+```
+Now, version `3.4.19-dev` is installed.
+
+Now move to the folder where you cloned this repo to.
+
+Or to the folder where you have your own source files.
+
+You can check the version of your opencv installation using [build](#build) and [check-version](#check-for-version)
+
+<br>
+<br>
+
 
 ### Content: 
 `Makefile` (to build the project, compiling and linking)
 
 `src/main.cpp` (source file)
 
+`src/openCv_version.cpp` (displays currently used openCv version)
+
 `PICs/Schaukelbub.png` (image source)
 
 <br>
 
-### Install Librarys:
-```bash
-sudo apt-get install -y libopencv-dev
-```
 
 ### Build:
 ```bash
 make
 ```
-### Usage: 
+
+### Check for version:
+```bash
+./checkVersion
+```
+
+### Usage of helloWorld: 
 ```bash
 ./helloWorld <path-to-image>
 ```
@@ -149,23 +211,31 @@ make
 - WSL2 version: 1.0.3.0 on Win11
 - Ubuntu 20.04.5 LTS
 - Python version: 3.8.10
-- opencv-contrib version: 4.7.0.68
+- opencv-contrib version: 4.7.0.68 (for Python)
+- opencv-contrib version: 3.4.19-dev (for C++)
 
 
 <br>
 
 ### Weird WSL bugs
 
-- When using older version of WSL2 pics close immideately or dont close at all after using the keyboard to interact with `waitkey(0)` the key chache can get stuck. 
+- When using older version of WSL2 Image-Windows close immediately or don't close at all after using the keyboard to interact with `waitkey(0)` the key chache can get stuck. 
+
 
     Workaround is to **restart your WSL** from `PowerShell` using:
     ```powershell
     wsl --shutdown
     ```
-    Fix that worked for me is to simply update your WSL from `PowerShell` using:
+    Fix (that worked for me) is to simply update your WSL from `PowerShell` using:
 
     ```powershell
     wsl --update
+    ```
+
+    Update your stuff inside WSL from `bash` using:
+    ```bash
+    sudo apt-get update && sudo apt-get upgrade -y
+    sudo apt update && sudo apt upgrade -y
     ```
 
 <br>

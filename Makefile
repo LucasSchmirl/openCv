@@ -5,28 +5,34 @@
 
 CC=g++
 CPPFLAGS= -g -Wall
-#OPENCVFLAGS = `pkg-config opencv --cflags --libs`	##### In case of make error (lib not found) use this line and comment out the next one
-OPENCVFLAGS = `pkg-config --cflags --libs opencv4`
+OPENCVFLAGS = `pkg-config --cflags --libs opencv`#4` # use "opencv4" when you want to link to version 4
 LIBRARIES = $(OPENCVFLAGS)
 
 # find sources
-SOURCE := $(shell find . -name 'main.cpp')
+MAIN := $(shell find . -name 'main.cpp')
+CHECKVERSION := $(shell find . -name 'openCv_version.cpp')
 
 # name executables
 EXE := helloWorld
-
+VERSION := checkVersion
 
 # main target
-all: $(EXE)
-	@echo "\nAll object files created and linked.\nAll executables created (helloWorld).\nUse with: ./helloWorld <path_to_file>\n"
+all: main version
+	@echo "\nAll object files created and linked.\nAll executables created (helloWorld, openCv_version).\n\
+	Use with: ./helloWorld <path_to_file> and ./checkVersion\n"
+
+main: $(EXE)
+
+version: $(VERSION)
 
 
 # build executable programs
-$(EXE): $(SOURCE)
+$(EXE): $(MAIN)
 	$(CC) $(CPPFLAGS) -o $(EXE) $< $(LIBRARIES)
 
-
+$(VERSION): $(CHECKVERSION)
+	$(CC) $(CPPFLAGS) -o $(VERSION) $< $(LIBRARIES)
 
 # cleaning target
 clean:
-	-rm -rf *.o $(EXE)
+	-rm -rf *.o $(EXE) $(VERSION)

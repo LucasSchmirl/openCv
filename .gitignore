@@ -11,7 +11,7 @@
 
 # Ignore files with specific extension
 .vscode/
-/.venv
+/.venv*
 *.o
 *.out
 .pdf:Zone.Identifier

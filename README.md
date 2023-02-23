@@ -71,11 +71,22 @@ or install specific version, usage: `pip install opencv-contrib-python==<version
 pip install opencv-contrib-python==3.4.0
 ```
 
-This will fail becaus there is no `3.4.0`. 
+If this install fails, check out your versions with:
+```bash
+pip --version
+python --version
+```
+and check the internet to find out which versions are the minimal requirement. 
 
-From the error message you can now choose your beloved version and re-run the last command with chosen version.
+Maybe you just need to upgrade your stuff using.
 
-Now your openCv installation for python is complete.
+```bash
+sudo apt-get update && sudo apt-get upgrade -y
+sudo apt update && sudo apt upgrade -y
+```
+
+And/Or [restart your WSL](#weird-wsl-bugs)
+
 <br>
 <br>
 

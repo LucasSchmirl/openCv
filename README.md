@@ -9,7 +9,7 @@ For using openCv inside a virtual environment install a `venv`:
 
 Inside this `venv`, packages can be installed (e.g. `pip`) which are only accessible inside this `venv` (not system wide). If you delete the `venv`, all containing packages are deleted.
 
-if not needed, skip to [OpenCv installation](#opencv-installation)
+if not needed, skip to [OpenCv for Python](#opencv-installation-for-use-with-python) or [OpenCv for C++](#opencv-installation-for-use-with-c)
 
 otherwise create a folder for your project:
 ```bash
@@ -71,21 +71,13 @@ or install specific version, usage: `pip install opencv-contrib-python==<version
 pip install opencv-contrib-python==3.4.0
 ```
 
-If this install fails, check out your versions with:
-```bash
-pip --version
-python --version
-```
-and check the internet to find out which versions are the minimal requirement. 
+This will fail because there is no `3.4.0`.
 
-Maybe you just need to upgrade your stuff using.
+From the error message you can now choose your beloved version and re-run the last command with chosen version.
 
-```bash
-sudo apt-get update && sudo apt-get upgrade -y
-sudo apt update && sudo apt upgrade -y
-```
+Now your openCv installation for python is complete.
 
-And/Or [restart your WSL](#weird-wsl-bugs)
+You can test the version of the opencv installation by running `openCv_version.py`.
 
 <br>
 <br>
@@ -156,7 +148,7 @@ mv opencv-3.4 opencv
 mv opencv_contrib-3.4 opencv_contrib
 ```
 
-To build, run the following commands line by line (thaks to [Fynn](https://github.com/fynnbehnke) its that easy): 
+To build, run the following commands line by line (thaks to [Fynn](https://github.com/fynnbehnke) its so easy): 
 ```bash
 cd opencv
 mkdir release
@@ -171,7 +163,7 @@ ldconfig
 exit
 cd
 ```
-Now, version `3.4.19-dev` is installed.
+Finally, version `3.4.19-dev` is installed (for C++).
 
 Now move to the folder where you cloned this repo to.
 
@@ -230,7 +222,7 @@ make
 
 ### Weird WSL bugs
 
-- When using older version of WSL2 Image-Windows close immediately or don't close at all after using the keyboard to interact with `waitkey(0)` the key chache can get stuck. 
+- When using older versions of WSL2 the Image-Windows close immediately or don't close at all after using the keyboard to interact with `waitkey(0)` because the key chache can get stuck. 
 
 
     Workaround is to **restart your WSL** from `PowerShell` using:
@@ -253,6 +245,7 @@ make
 
 - `Error: Package OpenCV or file opencv.pc not found` when using `make`
     check for PATH:
+
     https://prateekvjoshi.com/2013/10/18/package-opencv-not-found-lets-find-it/
 
 <br>

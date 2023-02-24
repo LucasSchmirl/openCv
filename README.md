@@ -130,7 +130,13 @@ Change dir to `/opt`:
 cd /opt
 ```
 
-Get `opencv` and `opencv_contrib`:
+Get `opencv 3.4.13` and `opencv_contrib 3.4.13` (The Moodle Version):
+```bash
+wget -O opencv.zip https://github.com/opencv/opencv/archive/refs/tags/3.4.13.zip
+wget -O opencv_contrib.zip https://github.com/opencv/opencv_contrib/releases/tag/3.4.13
+```
+
+DO NOT Get `opencv 3.4` and `opencv_contrib 3.4`:
 ```bash
 wget -O opencv.zip https://github.com/opencv/opencv/archive/3.4.zip
 wget -O opencv_contrib.zip https://github.com/opencv/opencv_contrib/archive/3.4.zip

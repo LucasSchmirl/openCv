@@ -1,5 +1,5 @@
-#   OpenCv Setup and Hello World programs in python and C++
-made by Lucas Schmirl 20.02.2022, info.hellgineer@gmail.com, last edit: 23.02.2022
+#   OpenCv Setup and Hello World programs in Python and C++
+made by Lucas Schmirl 20.02.2022, info.hellgineer@gmail.com, last edit: 24.02.2022
 
 <br>
 
@@ -130,17 +130,16 @@ Change dir to `/opt`:
 cd /opt
 ```
 
-Get `opencv 3.4.13` and `opencv_contrib 3.4.13` (The Moodle Version):
+If you installed the wrong version or have another version installed already, first [uninstall the old version](#uninstall-an-old-opencv-version-c)
+
+<br>
+
+Get `opencv 3.4.13` and `opencv_contrib 3.4.13` (***The Moodle Version***):
 ```bash
 wget -O opencv.zip https://github.com/opencv/opencv/archive/refs/tags/3.4.13.zip
 wget -O opencv_contrib.zip https://github.com/opencv/opencv_contrib/archive/refs/tags/3.4.13.zip
 ```
 
-DO NOT Get `opencv 3.4` and `opencv_contrib 3.4`:
-```bash
-wget -O opencv.zip https://github.com/opencv/opencv/archive/3.4.zip
-wget -O opencv_contrib.zip https://github.com/opencv/opencv_contrib/archive/3.4.zip
-```
 
 Unzip both:
 ```bash
@@ -150,8 +149,8 @@ unzip opencv_contrib.zip
 
 Change the name of these two folders:
 ```bash
-mv opencv-3.4 opencv
-mv opencv_contrib-3.4 opencv_contrib
+mv opencv-3.4.13 opencv
+mv opencv_contrib-3.4.13 opencv_contrib
 ```
 
 To build, run the following commands line by line (thaks to [Fynn](https://github.com/fynnbehnke) its so easy): 
@@ -169,7 +168,7 @@ ldconfig
 exit
 cd
 ```
-Finally, version `3.4.19-dev` is installed (for C++).
+Finally, version `3.4.13` is installed (for C++).
 
 Now move to the folder where you cloned this repo to.
 
@@ -212,68 +211,81 @@ make
 <br>
 <br>
 
-## Additional information
+# Additional information
 
 <br>
 
-### System used
+## System used
 - WSL2 version: 1.0.3.0 on Win11
 - Ubuntu 20.04.5 LTS
 - Python version: 3.8.10
 - opencv-contrib version: 4.7.0.68 (for Python)
-- opencv-contrib version: 3.4.19-dev (for C++)
+- opencv-contrib version: 3.4.13 (for C++)
 
 
 <br>
 
-### Weird WSL bugs
-
-- When using older versions of WSL2 the Image-Windows close immediately or don't close at all after using the keyboard to interact with `waitkey(0)` because the key chache can get stuck. 
-
-
-    Workaround is to **restart your WSL** from `PowerShell` using:
-    ```powershell
-    wsl --shutdown
-    ```
-    Fix (that worked for me) is to simply update your WSL from `PowerShell` using:
-
-    ```powershell
-    wsl --update
-    ```
-
-    Update your stuff inside WSL from `bash` using:
-    ```bash
-    sudo apt-get update && sudo apt-get upgrade -y
-    sudo apt update && sudo apt upgrade -y
-    ```
+## Uninstall an old opencv version (C++)
+If you have a wrong version already installed you can `cd` into the folder where you did `make install` the last time and:
+```bash
+cd opencv/release
+make uninstall
+```
+after this, the previously installed version is uninstalled. Then install the [new version](#opencv-installation-for-use-with-c)
 
 <br>
 
-- `Error: Package OpenCV or file opencv.pc not found` when using `make`
-    check for PATH:
+<br>
 
-    https://prateekvjoshi.com/2013/10/18/package-opencv-not-found-lets-find-it/
+## Weird WSL bugs
+
+### When using older versions of WSL2 the Image-Windows close immediately or don't close at all after using the keyboard to interact with `waitkey(0)` because the key chache can get stuck. 
+
+
+Workaround is to **restart your WSL** from `PowerShell` using:
+```powershell
+wsl --shutdown
+```
+Fix (that worked for me) is to simply update your WSL from `PowerShell` using:
+
+```powershell
+wsl --update
+```
+
+Update your stuff inside WSL from `bash` using:
+```bash
+sudo apt-get update && sudo apt-get upgrade -y
+sudo apt update && sudo apt upgrade -y
+```
 
 <br>
 
-- PYTHON-WEBCAM HUSTLE ONLY!
+### `Error: Package OpenCV or file opencv.pc not found` when using `make`
+check for PATH:
 
-    Accessing USB-DEVICES is not possible using WSL2 without building your own kernel.
+https://prateekvjoshi.com/2013/10/18/package-opencv-not-found-lets-find-it/
 
-    - Video for kernel rebuild:
+<br>
+
+### PYTHON-WEBCAM HUSTLE ONLY!
+
+Accessing USB-DEVICES is not possible using WSL2 without building your own kernel.
+
+- Video for kernel rebuild:
+
+    https://www.youtube.com/watch?v=t_YnACEPmrM
+
+- corresponding commands to video:
     
-        https://www.youtube.com/watch?v=t_YnACEPmrM
+    https://agiledevart.github.io/wsl2_usb_camera.txt
+    
+- Kernel:
+    
+    https://github.com/microsoft/WSL2-Linux-Kernel/releases/tag/linux-msft-wsl-5.15.79.1
 
-    - corresponding commands to video:
-        
-        https://agiledevart.github.io/wsl2_usb_camera.txt
-        
-    - Kernel:
-        
-        https://github.com/microsoft/WSL2-Linux-Kernel/releases/tag/linux-msft-wsl-5.15.79.1
+- (Advice on cam&mic in WSL2):
 
-    - (Advice on cam&mic in WSL2):
+    https://version-2.com/zh/2022/02/advice-on-camera-and-microphone-in-wsl2-ubuntu/
 
-        https://version-2.com/zh/2022/02/advice-on-camera-and-microphone-in-wsl2-ubuntu/
+### REBUILDING THE KERNEL TO SPICY FOR ME - good luck
 
-    ### REBUILDING THE KERNEL TO SPICY FOR ME - good luck

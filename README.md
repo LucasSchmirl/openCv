@@ -133,7 +133,7 @@ cd /opt
 Get `opencv 3.4.13` and `opencv_contrib 3.4.13` (The Moodle Version):
 ```bash
 wget -O opencv.zip https://github.com/opencv/opencv/archive/refs/tags/3.4.13.zip
-wget -O opencv_contrib.zip https://github.com/opencv/opencv_contrib/releases/tag/3.4.13
+wget -O opencv_contrib.zip https://github.com/opencv/opencv_contrib/archive/refs/tags/3.4.13.zip
 ```
 
 DO NOT Get `opencv 3.4` and `opencv_contrib 3.4`:

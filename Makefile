@@ -1,5 +1,5 @@
 #####################################################################
-#   This Makefile builds all executables to run the openCv program	#
+#   This Makefile builds all HELLO_WORLDcutables to run the openCv program	#
 #####################################################################
 #	made by Lucas Schmirl 20.02.2022,	last edit: 20.02.2022
 
@@ -8,31 +8,44 @@ CPPFLAGS= -g -Wall
 OPENCVFLAGS = `pkg-config --cflags --libs opencv`#4` # use "opencv4" when you want to link to version 4
 LIBRARIES = $(OPENCVFLAGS)
 
+# To add additional cpp files uncomment and change 
+# "SRC_NEW_SRC", 'name_of_file.cpp', "NEW_EXE", "newExe" and "newTarget"
+
 # find sources
-MAIN := $(shell find . -name 'main.cpp')
-CHECKVERSION := $(shell find . -name 'openCv_version.cpp')
+SRC_MAIN := $(shell find . -name 'main.cpp')
+SRC_VERSION := $(shell find . -name 'openCv_version.cpp')
+#SRC_NEW_SRC := $(shell find . -name 'name_of_file.cpp')
+
 
 # name executables
-EXE := helloWorld
-VERSION := checkVersion
+EXE_MAIN := helloWorld
+EXE_VERSION := checkVersion
+#NEW_EXE := newExe
+
 
 # main target
-all: main version
-	@echo "\nAll object files created and linked.\nAll executables created (helloWorld, openCv_version).\n\
-	Use with: ./helloWorld <path_to_file> and ./checkVersion\n"
-
-main: $(EXE)
-
-version: $(VERSION)
+all: main version #newTarget
+	@echo "\nAll object files created and linked.\nAll executables created.\n\
+	Use with: ./helloWorld <path_to_file>"
 
 
-# build executable programs
-$(EXE): $(MAIN)
-	$(CC) $(CPPFLAGS) -o $(EXE) $< $(LIBRARIES)
+# name targets seperately
+main: $(EXE_MAIN)
+version: $(EXE_VERSION)
+#newTarget: $(EXE_NEW_EXE)
 
-$(VERSION): $(CHECKVERSION)
-	$(CC) $(CPPFLAGS) -o $(VERSION) $< $(LIBRARIES)
+
+# build exexcutables
+$(EXE_MAIN): $(SRC_MAIN)
+	$(CC) $(CPPFLAGS) -o $(EXE_MAIN) $< $(LIBRARIES)
+
+$(EXE_VERSION): $(SRC_VERSION)
+	$(CC) $(CPPFLAGS) -o $(EXE_VERSION) $< $(LIBRARIES)
+
+#$(EXE_NEW_EXE): $(SRC_NEWFILE)
+#	$(CC) $(CPPFLAGS) -o $(EXE_NEW_EXE) $< $(LIBRARIES)
+
 
 # cleaning target
 clean:
-	-rm -rf *.o $(EXE) $(VERSION)
+	-rm -rf *.o $(EXE_MAIN) $(EXE_VERSION) $(EXE_NEW_EXE)

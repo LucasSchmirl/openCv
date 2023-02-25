@@ -176,6 +176,11 @@ Or to the folder where you have your own source files.
 
 You can check the version of your opencv installation using [build](#build) and [check-version](#check-for-version)
 
+or just by simply running:
+```bash
+pkg-config --modversion opencv
+```
+
 <br>
 <br>
 

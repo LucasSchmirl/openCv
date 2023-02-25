@@ -29,20 +29,21 @@ int main(int argc, char* argv[])
     // insert Image into Window by giving same name
     cv::imshow("Image: Schaukelbub", img);
 
-    std::cout << "Press any key to resize current window to image size." << std::endl;
+    std::cout << "Resizing window...." << std::endl;
     // wait for user input (keyboard)
-    while(cv::waitKey(0) == 0);
+    cv::waitKey(5000);
 
 
-    std::cout << "Press any key to close current window." << std::endl;
     // resize window to image size
     cv::resizeWindow("Image: Schaukelbub", img.size());
     // on some machines 2nd Argument cant be the img.size array. 
     // It has to be ("name", int width, int height)
     // This can be done with: //cv::resizeWindow("name", img.cols, img.rows)
 
+
+    std::cout << "Press any key to close current window." << std::endl;
     // wait for user input (keyboard)
-    while(cv::waitKey(0) == 0);
+    cv::waitKey(5000);
     
     std::cout << "End of program.\nClosing all windows..." << std::endl;
     // destroy all windows

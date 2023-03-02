@@ -153,6 +153,11 @@ mv opencv-3.4.13 opencv
 mv opencv_contrib-3.4.13 opencv_contrib
 ```
 
+If you want to enable "zoom into color channels" change following `OCV_OPTION`'s in `opencv/CMakeLists.txt`:
+
+`Build with Qt Backend support` and `Use QTKit Video I/O backend` to `ON`, then build.
+
+
 To build, run the following commands line by line (thaks to [Fynn](https://github.com/fynnbehnke) its so easy): 
 ```bash
 cd opencv
@@ -237,11 +242,7 @@ cd opencv/release
 make uninstall
 ```
 after this, the previously installed version is uninstalled.
-
-If you want to enable "zoom into color channels" change following `OCV_OPTION`'s in `opencv/CMakeLists.txt`:
-`Build with Qt Backend support` and `Use QTKit Video I/O backend` to `ON`
-
- Then install the [new version](#opencv-installation-for-use-with-c)
+Then install the [new version](#opencv-installation-for-use-with-c)
  
 <br>
 

@@ -15,6 +15,7 @@ LIBRARIES = $(OPENCVFLAGS)
 SRC_MAIN := $(shell find . -name 'main.cpp')
 SRC_VERSION := $(shell find . -name 'openCv_version.cpp')
 SRC_TACKLE := $(shell find . -name 'tackleImg.cpp')
+SRC_SIFT := $(shell find . -name 'sift_example.cpp')
 #SRC_NEW_SRC := $(shell find . -name 'name_of_file.cpp')
 
 
@@ -22,19 +23,20 @@ SRC_TACKLE := $(shell find . -name 'tackleImg.cpp')
 EXE_MAIN := helloWorld
 EXE_VERSION := checkVersion
 EXE_TACKLE := tackle
+EXE_SIFT := sift
 #NEW_EXE := newExe
 
 
 # main target
-all: main version tackle #newTarget
-	@echo "\nAll object files created and linked.\nAll executables created.\n\
-	Use with: ./helloWorld <path_to_file>"
+all: main version tackle sift #newTarget
+	@echo "\nAll object files created and linked.\nAll executables created.\n"
 
 
 # name targets seperately
 main: $(EXE_MAIN)
 version: $(EXE_VERSION)
 tackle: $(EXE_TACKLE)
+sift: $(EXE_SIFT)
 #newTarget: $(EXE_NEW_EXE)
 
 
@@ -48,10 +50,13 @@ $(EXE_VERSION): $(SRC_VERSION)
 $(EXE_TACKLE): $(SRC_TACKLE)
 	$(CC) $(CPPFLAGS) -o $(EXE_TACKLE) $< $(LIBRARIES)
 
+$(EXE_SIFT): $(SRC_SIFT)
+	$(CC) $(CPPFLAGS) -o $(EXE_SIFT) $< $(LIBRARIES)
+
 #$(EXE_NEW_EXE): $(SRC_NEWFILE)
 #	$(CC) $(CPPFLAGS) -o $(EXE_NEW_EXE) $< $(LIBRARIES)
 
 
 # cleaning target
 clean:
-	-rm -rf *.o $(EXE_MAIN) $(EXE_VERSION) $(EXE_TACKLE) $(EXE_NEW_EXE)
+	-rm -rf *.o $(EXE_MAIN) $(EXE_VERSION) $(EXE_TACKLE) $(EXE_NEW_EXE) $(EXE_SIFT)

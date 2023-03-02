@@ -236,8 +236,13 @@ If you have a wrong version already installed you can `cd` into the folder where
 cd opencv/release
 make uninstall
 ```
-after this, the previously installed version is uninstalled. Then install the [new version](#opencv-installation-for-use-with-c)
+after this, the previously installed version is uninstalled.
 
+If you want to enable "zoom into color channels" change following `OCV_OPTION`'s in `opencv/CMakeLists.txt`:
+`Build with Qt Backend support` and `Use QTKit Video I/O backend` to `ON`
+
+ Then install the [new version](#opencv-installation-for-use-with-c)
+ 
 <br>
 
 <br>

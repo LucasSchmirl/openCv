@@ -153,7 +153,11 @@ mv opencv-3.4.13 opencv
 mv opencv_contrib-3.4.13 opencv_contrib
 ```
 
-If you want to enable "zoom into color channels" change following `OCV_OPTION`'s in `opencv/CMakeLists.txt`:
+If you want to enable "zoom into color channels"
+
+![Zoom into color channels](PICs/zoom_into_color_channels.gif)
+
+change following `OCV_OPTION`'s in `opencv/CMakeLists.txt` (somewhere near line: 333):
 
 `Build with Qt Backend support` and `Use QTKit Video I/O backend` to `ON`, then build.
 

@@ -31,7 +31,7 @@ int main(int argc, char* argv[])
 
     std::cout << "Resizing window...." << std::endl;
     // wait for user input (keyboard)
-    cv::waitKey(5000);
+    cv::waitKey(500);
 
 
     // resize window to image size
@@ -43,7 +43,7 @@ int main(int argc, char* argv[])
 
     std::cout << "Press any key to close current window." << std::endl;
     // wait for user input (keyboard)
-    cv::waitKey(5000);
+    cv::waitKey(0);
     
     std::cout << "End of program.\nClosing all windows..." << std::endl;
     // destroy all windows

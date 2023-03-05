@@ -11,6 +11,7 @@
 
 # Ignore files with specific extension
 old_Makefile
+/*_hue
 .vscode/
 /.venv*
 *.o

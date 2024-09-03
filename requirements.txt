@@ -2,4 +2,4 @@
 	# made by Lucas Schmirl 20.02.2022,	last edit: 20.02.2022
 	numpy==1.24.2
 	#pandas # ohne version
-	opencv-contrib-python==4.7.0.68
+	opencv-contrib-python>=4.8.1.78
